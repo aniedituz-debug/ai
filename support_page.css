@@ -1,0 +1,332 @@
+/* --- Support Page Specific Styles --- */
+
+.support-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.channel-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.channel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.channel-card i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.channel-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.channel-card p {
+    color: var(--gray-text);
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.channel-card .status {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.channel-card .status:before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background: #ff3333;
+}
+
+.channel-card .status:contains("Online"),
+.channel-card .status:contains("Онлайн"),
+.channel-card .status:contains("24/7"),
+.channel-card .status:contains("Doimo") {
+    color: #00ff88;
+}
+
+.channel-card .status:contains("Online"):before,
+.channel-card .status:contains("Онлайн"):before,
+.channel-card .status:contains("24/7"):before,
+.channel-card .status:contains("Doimo"):before {
+    background: #00ff88;
+}
+
+.live-chat-section {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.live-chat-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.demo-chat-box {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.demo-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(0, 212, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.demo-chat-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.demo-chat-header-info h4 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.demo-chat-header-info p {
+    color: var(--gray-text);
+    font-size: 0.9rem;
+}
+
+.demo-chat-messages {
+    padding: 20px;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    display: flex;
+    gap: 15px;
+    max-width: 80%;
+}
+
+.message.support {
+    align-self: flex-start;
+}
+
+.message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.message.support .message-avatar {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--primary);
+}
+
+.message.user .message-avatar {
+    background: rgba(255, 0, 200, 0.2);
+    color: var(--secondary);
+}
+
+.message-content {
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.message.support .message-content {
+    background: rgba(0, 212, 255, 0.1);
+    border-top-left-radius: 0;
+}
+
+.message.user .message-content {
+    background: rgba(255, 0, 200, 0.1);
+    border-top-right-radius: 0;
+}
+
+.message-content p {
+    margin-bottom: 10px;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: var(--gray-text);
+}
+
+.demo-chat-input {
+    display: flex;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-chat-input input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(18, 18, 37, 0.7);
+    color: var(--light-text);
+    border-radius: 30px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.demo-chat-input input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.demo-chat-input button {
+    padding: 15px 25px;
+    background: var(--primary);
+    color: var(--darker-bg);
+    border: none;
+    border-radius: 30px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.demo-chat-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--gray-text);
+    line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+    padding: 20px;
+    max-height: 500px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .support-channels {
+        grid-template-columns: 1fr;
+    }
+    
+    .live-chat-section {
+        padding: 20px;
+    }
+    
+    .demo-chat-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .message {
+        max-width: 90%;
+    }
+    
+    .demo-chat-messages {
+        height: 250px;
+    }
+    
+    .demo-chat-input {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .demo-chat-input button {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .live-chat-section h2,
+    .faq-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .channel-card,
+    .live-chat-section {
+        padding: 20px;
+    }
+    
+    .channel-card h3 {
+        font-size: 1.3rem;
+    }
+}

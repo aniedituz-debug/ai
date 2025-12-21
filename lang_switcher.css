@@ -1,0 +1,16 @@
+// Language switcher CSS
+.lang-btn {
+    background: transparent;
+    border: 1px solid #00d4ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+    background: #00d4ff;
+    color: #1a1a2e;
+}

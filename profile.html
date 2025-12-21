@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizning Profilingiz - Alya_Kujou.Uz</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="ai.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        .profile-container {
+            max-width: 900px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, rgba(20, 20, 40, 0.8), rgba(10, 10, 25, 0.9));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-avatar-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            color: var(--primary);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: rgba(20, 20, 40, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .profile-card h3 {
+            margin-bottom: 25px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-update {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .btn-update:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .stats-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-item:last-child {
+            border-bottom: none;
+        }
+
+        .stats-label {
+            color: #888;
+        }
+
+        .stats-val {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="index-body">
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Alya_Kujou.Uz</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="yangiliklar.html" class="nav-link">Updates</a>
+            <a href="features.html" class="nav-link">Features</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="support.html" class="nav-link">Support</a>
+
+            <div class="nav-auth-section">
+                <div id="userNavWrapper">
+                    <div class="user-nav-profile" id="userProfileNav">
+                        <img src="alya_avatar.jpg" alt="User" class="nav-user-img" id="navUserImg">
+                        <span class="nav-user-name" id="navUserName">...</span>
+
+                        <div class="user-dropdown" id="userDropdownNav">
+                            <a href="profile.html" class="user-dropdown-item">
+                                <i class="fa-solid fa-user-gear"></i> Mening profilim
+                            </a>
+                            <a href="admin.html" class="user-dropdown-item" id="adminPanelLink" style="display: none;">
+                                <i class="fa-solid fa-gauge"></i> Admin Panel
+                            </a>
+                            <a href="#" class="user-dropdown-item logout" id="logoutBtnNav">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <!-- Header Section -->
+        <div class="profile-header">
+            <img src="alya_avatar.jpg" alt="User Avatar" class="profile-avatar-large" id="profileAvatarLarge">
+            <div class="profile-info">
+                <h1 id="profileDisplayName">User Name</h1>
+                <p id="profileDisplayEmail">user@example.com</p>
+                <span class="profile-badge" id="profileRoleBadge">User</span>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Edit Profile Section -->
+            <div class="profile-card">
+                <h3><i class="fa-solid fa-user-pen"></i> Ma'lumotlarni tahrirlash</h3>
+                <form id="updateProfileForm">
+                    <div class="form-group">
+                        <label>To'liq ism</label>
+                        <input type="text" id="inputName" placeholder="Ismingizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Avatar URL (Rasm havolasi)</label>
+                        <input type="text" id="inputPhoto" placeholder="https://example.com/photo.jpg">
+                    </div>
+                    <button type="submit" class="btn-update">Yangilash</button>
+                </form>
+
+                <hr style="margin: 40px 0; opacity: 0.1;">
+
+                <h3><i class="fa-solid fa-key"></i> Parolni o'zgartirish</h3>
+                <form id="changePasswordForm">
+                    <div class="form-group">
+                        <label>Eski parol</label>
+                        <input type="password" id="oldPassword" placeholder="********" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Yangi parol</label>
+                        <input type="password" id="newPassword" placeholder="********" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Yangi parolni tasdiqlang</label>
+                        <input type="password" id="confirmPassword" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="btn-update"
+                        style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2);">Parolni
+                        yangilash</button>
+                </form>
+            </div>
+
+            <!-- Stats/Status Section -->
+            <div class="profile-card">
+                <h3><i class="fa-solid fa-circle-info"></i> Hisob ma'lumotlari</h3>
+                <div class="stats-item">
+                    <span class="stats-label">ID raqami:</span>
+                    <span class="stats-val" id="profileId">#0</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">Ro'yxatdan o'tgan:</span>
+                    <span class="stats-val" id="profileDate">...</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">Hisob holati:</span>
+                    <span class="stats-val" style="color: #00ff88;">Faol</span>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <button id="logoutBtnProfile" class="btn-update"
+                        style="background: rgba(255, 51, 51, 0.1); color: #ff3333; border: 1px solid rgba(255, 51, 51, 0.2);">
+                        <i class="fa-solid fa-right-from-bracket"></i> Chiqish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="style.js"></script> <!-- For toast and generic logic if needed -->
+</body>
+
+</html>

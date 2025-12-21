@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication - Alya_Kujou.Uz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: #0a0a1a;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .callback-card {
+            background: #121225;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .callback-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .callback-card p {
+            color: #aaa;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background: #0a0a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            overflow-x: auto;
+            color: #ccc;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+
+        .status-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            color: #00ff88;
+        }
+
+        .error {
+            color: #ff3333;
+        }
+
+        .loading {
+            color: #00d4ff;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn-home:hover {
+            box-shadow: 0 0 15px #00d4ff;
+            background: #00b8d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="callback-card">
+        <div id="status-icon" class="status-icon loading">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </div>
+        <h2 id="status-title">Processing Login...</h2>
+        <p id="status-message">Please wait while we verify your information with the server.</p>
+        
+        <pre id="debug-info">Waiting for authentication response...</pre>
+        
+        <a href="index.html" id="home-button" class="btn-home" style="display: none;">Return to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const token = urlParams.get('token');
+            
+            const statusIcon = document.getElementById('status-icon');
+            const statusTitle = document.getElementById('status-title');
+            const statusMessage = document.getElementById('status-message');
+            const debugInfo = document.getElementById('debug-info');
+            const homeButton = document.getElementById('home-button');
+            
+            if (error) {
+                // Authentication failed
+                statusIcon.className = 'status-icon error';
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+                statusTitle.textContent = 'Authentication Failed';
+                statusMessage.textContent = `Error: ${error}`;
+                debugInfo.textContent = `Error Details: ${error}`;
+                homeButton.style.display = 'inline-block';
+            } else if (token) {
+                // Authentication successful
+                statusIcon.className = 'status-icon success';
+                statusIcon.innerHTML = '<i class="fa-solid fa-check-circle"></i>';
+                statusTitle.textContent = 'Authentication Successful';
+                statusMessage.textContent = 'You have been successfully logged in.';
+                debugInfo.textContent = `Token: ${token.substring(0, 20)}...`;
+                
+                // Simulate setting user data in localStorage
+                localStorage.setItem('alya_user_email', 'user@example.com');
+                localStorage.setItem('alya_user_name', 'Authenticated User');
+                localStorage.setItem('alya_user_role', 'user');
+                
+                // Redirect to home page after delay
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else {
+                // No parameters - show generic message
+                statusIcon.className = 'status-icon error';
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+                statusTitle.textContent = 'Authentication Error';
+                statusMessage.textContent = 'Invalid authentication response.';
+                debugInfo.textContent = 'No token or error parameters found in URL.';
+                homeButton.style.display = 'inline-block';
+            }
+        });
+    </script>
+</body>
+</html>

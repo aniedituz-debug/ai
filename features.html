@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Alya_Kujou.Uz</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">Alya_Kujou.Uz</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link" data-key="nav_home">Bosh sahifa</a>
+            <a href="yangiliklar.html" class="nav-link" data-key="latest_posts_title">Yangiliklar</a>
+            <a href="features.html" class="nav-link active" data-key="nav_features">Xususiyatlar</a>
+            <a href="about.html" class="nav-link" data-key="nav_about">Biz haqimizda</a>
+            <a href="services.html" class="nav-link" data-key="nav_services">Xizmatlar</a>
+            <a href="support.html" class="nav-link" data-key="nav_support">Qo'llab-quvvatlash</a>
+
+            <div class="nav-auth-section">
+                <div class="lang-switcher-nav">
+                    <button class="lang-btn active" data-lang="uz">UZ</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+
+                <div id="userNavWrapper">
+                    <!-- Login CTA (Default) -->
+                    <a href="login.html" class="nav-cta" id="loginBtnNav" data-key="nav_login">Kirish</a>
+
+                    <!-- Profile (Hidden by default) -->
+                    <div class="user-nav-profile" id="userProfileNav" style="display: none;">
+                        <img src="alya_avatar.jpg" alt="User" class="nav-user-img" id="navUserImg">
+                        <span class="nav-user-name" id="navUserName">User Name</span>
+
+                        <div class="user-dropdown" id="userDropdownNav">
+                            <a href="profile.html" class="user-dropdown-item">
+                                <i class="fa-solid fa-user-gear"></i> Mening profilim
+                            </a>
+                            <a href="admin.html" class="user-dropdown-item" id="adminPanelLink" style="display: none;">
+                                <i class="fa-solid fa-gauge"></i> Admin Panel
+                            </a>
+                            <a href="#" class="user-dropdown-item logout" id="logoutBtnNav">
+                                <i class="fa-solid fa-right-from-bracket"></i> Chiqish
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-key="features_hero_title">Alya Xususiyatlari</h1>
+            <p class="hero-subtitle" data-key="features_hero_subtitle">Bizning platformamiz sizga taklif qiladigan
+                barcha afzalliklar</p>
+            <a href="#features" class="cta-button" data-key="features_cta">Boshlash</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 data-key="features_title">Bizning Afzalliklarimiz</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3 data-key="feature_ai_title">Sun'iy Intellekt</h3>
+                    <p data-key="feature_ai_desc">Kuchli AI yordamchi har doim yordamga tayyor</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3 data-key="feature_security_title">Xavfsizlik</h3>
+                    <p data-key="feature_security_desc">Barcha ma'lumotlaringiz eng yuqori darajada himoyalangan</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3 data-key="feature_speed_title">Tezlik</h3>
+                    <p data-key="feature_speed_desc">Eng ilg'or texnologiyalar orqali maksimal tezlik</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3 data-key="feature_support_title">Qo'llab-quvvatlash</h3>
+                    <p data-key="feature_support_desc">24/7 professional qo'llab-quvvatlash xizmati</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-wifi-slash"></i>
+                    <h3 data-key="feature_offline_title">Offlayn</h3>
+                    <p data-key="feature_offline_desc">Hech qanday internet ulanishisiz ham ishlashingiz mumkin</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-gift"></i>
+                    <h3 data-key="feature_free_title">Bepul</h3>
+                    <p data-key="feature_free_desc">Barcha xizmatlardan bepul foydalaning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="stat-users">15000+</h3>
+                    <p data-key="stat_users">Foydalanuvchilar</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="stat-uptime">99.9%</h3>
+                    <p data-key="stat_uptime">Faoliyat</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="stat-support">24/7</h3>
+                    <p data-key="stat_support">Qo'llab-quvvatlash</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Alya_Kujou.Uz</h3>
+                    <p data-key="footer_desc">Raqamli kelajakingiz shu yerda boshlanadi</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-key="footer_links_title">Havolalar</h4>
+                    <a href="index.html" data-key="footer_link1">Bosh sahifa</a>
+                    <a href="yangiliklar.html" data-key="latest_posts_title">Yangiliklar</a>
+                    <a href="features.html" data-key="footer_link2">Xususiyatlar</a>
+                    <a href="about.html" data-key="footer_link3">Biz haqimizda</a>
+                    <a href="services.html" data-key="nav_services">Xizmatlar</a>
+                    <a href="support.html" data-key="nav_support">Qo'llab-quvvatlash</a>
+                    <a href="login.html" data-key="footer_link4">Kirish</a>
+                </div>
+                <div class="footer-social">
+                    <h4 data-key="footer_social_title">Ijtimoiy tarmoqlar</h4>
+                    <div class="social-icons-footer">
+                        <a href="https://t.me/stormdev_coder"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/alya_kujou.uz?igsh=MXJ5ajNmNjNwbmMwNg=="><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://github.com/aniedituz-debug"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alya_Kujou.Uz. <span data-key="footer_rights">Barcha huquqlar himoyalangan.</span></p>
+                <p data-key="footer_dev">Dasturchi: <a href="https://t.me/stormdev_coder">Stormdev.coder</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="style.js"></script>
+    <script src="stats_loader.js"></script>
+</body>
+
+</html>

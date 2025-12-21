@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya_Kujou.Uz - Yangiliklar</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="ai.css">
+    <link rel="stylesheet" href="ai_chat_widget.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body class="index-body">
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Alya_Kujou.Uz</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link" data-key="nav_home">Home</a>
+            <a href="yangiliklar.html" class="nav-link active" data-key="latest_posts_title">Updates</a>
+            <a href="features.html" class="nav-link" data-key="nav_features">Features</a>
+            <a href="about.html" class="nav-link" data-key="nav_about">About</a>
+            <a href="services.html" class="nav-link" data-key="nav_services">Services</a>
+            <a href="support.html" class="nav-link" data-key="nav_support">Support</a>
+
+            <div class="nav-auth-section">
+                <div class="lang-switcher-nav">
+                    <button class="lang-btn active" data-lang="uz">UZ</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+
+                <div id="userNavWrapper">
+                    <a href="login.html" class="nav-cta" id="loginBtnNav" data-key="nav_login">Login</a>
+                    <div class="user-nav-profile" id="userProfileNav" style="display: none;">
+                        <img src="alya_avatar.jpg" alt="User" class="nav-user-img" id="navUserImg">
+                        <span class="nav-user-name" id="navUserName">User Name</span>
+                        <div class="user-dropdown" id="userDropdownNav">
+                            <a href="profile.html" class="user-dropdown-item">
+                                <i class="fa-solid fa-user-gear"></i> Mening profilim
+                            </a>
+                            <a href="admin.html" class="user-dropdown-item" id="adminPanelLink" style="display: none;">
+                                <i class="fa-solid fa-gauge"></i> Admin Panel
+                            </a>
+                            <a href="#" class="user-dropdown-item logout" id="logoutBtnNav">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Header -->
+    <div style="height: 100px;"></div>
+
+    <!-- Latest Posts Section -->
+    <section class="posts-section" id="postsSection" style="min-height: 70vh;">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 data-key="latest_posts_title">Latest Updates</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="posts-grid" id="homepagePostsGrid">
+                <!-- Posts will be injected here by style.js -->
+                <div class="posts-loading">Loading amazing content...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Alya_Kujou.Uz</h3>
+                    <p data-key="footer_desc">Raqamli kelajagingiz shu yerda boshlanadi</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-key="footer_links_title">Havolalar</h4>
+                    <a href="index.html" data-key="footer_link1">Bosh sahifa</a>
+                    <a href="yangiliklar.html" data-key="latest_posts_title">Yangiliklar</a>
+                    <a href="features.html" data-key="footer_link2">Xususiyatlar</a>
+                    <a href="about.html" data-key="footer_link3">Biz haqimizda</a>
+                    <a href="login.html" data-key="footer_link4">Kirish</a>
+                </div>
+                <div class="footer-social">
+                    <h4 data-key="footer_social_title">Ijtimoiy tarmoqlar</h4>
+                    <div class="social-icons-footer">
+                        <a href="https://t.me/stormdev_coder"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/alya_kujou.uz?igsh=MXJ5ajNmNjNwbmMwNg=="><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://github.com/aniedituz-debug"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alya_Kujou.Uz. <span data-key="footer_rights">Barcha huquqlar himoyalangan.</span></p>
+                <p data-key="footer_dev">Dasturchi: <a href="https://t.me/stormdev_coder">Stormdev.coder</a></p>
+                <p data-key="site_version" style="opacity: 0.6; font-size: 12px; margin-top: 5px;">Versiya: 1.0 Beta</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div class="chat-widget" id="chatWidget" style="display: none;">
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <img src="ai_avatar.jpg" alt="Alya">
+                <span class="online-status"></span>
+            </div>
+            <div class="chat-info">
+                <h4>Alya AI</h4>
+                <p>Online</p>
+            </div>
+            <button class="chat-close" id="chatCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button id="sendButton"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button class="chat-fab" id="chatFab">
+        <img src="ai_avatar.jpg" alt="AI Chat">
+    </button>
+
+    <script src="style.js"></script>
+    <script src="ai.js"></script>
+</body>
+
+</html>

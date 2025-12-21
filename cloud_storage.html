@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage - Alya_Kujou.Uz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        body {
+            background: #151525;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            border-bottom: 2px solid #00d4ff;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .nav-link:hover {
+            color: #00d4ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .service-hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #151525 100%);
+        }
+
+        .service-hero i {
+            font-size: 80px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .service-hero h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .service-hero p {
+            color: #888;
+            font-size: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-box {
+            background: #1a1a2e;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: .3s;
+        }
+
+        .feature-box:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-box i {
+            font-size: 36px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-box p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .pricing-section {
+            background: #1a1a2e;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #00d4ff;
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: #151525;
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 2px solid #333;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .price {
+            font-size: 48px;
+            color: #00d4ff;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 18px;
+            color: #888;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 10px 0;
+            color: #ccc;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-primary:hover {
+            background: #00b8d4;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Alya_Kujou.Uz</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="login.html" class="nav-link">Login</a>
+        </div>
+    </nav>
+
+    <div class="service-hero">
+        <i class="fa-solid fa-cloud"></i>
+        <h1>Cloud Storage</h1>
+        <p>Cheksiz bulutli saqlash xizmati</p>
+    </div>
+
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-box">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Xavfsiz Saqlash</h3>
+                <p>256-bit shifrlash bilan himoyalangan. Ma'lumotlaringiz to'liq xavfsiz.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-rotate"></i>
+                <h3>Avtomatik Zaxira</h3>
+                <p>Har kuni avtomatik zaxira nusxa yaratiladi. Hech narsa yo'qolmaydi.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Tezkor Kirish</h3>
+                <p>Fayllaringizga istalgan joydan tezkor kirish imkoniyati.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Sinxronizatsiya</h3>
+                <p>Barcha qurilmalaringizda avtomatik sinxronlash.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-users"></i>
+                <h3>Ulashish</h3>
+                <p>Fayllarni oson ulashing va hamkorlik qiling.</p>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>Versiya Tarixi</h3>
+                <p>Fayllarning barcha versiyalarini saqlash va qaytarish.</p>
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2>Narxlar</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Bepul</h3>
+                    <div class="price">$0<span>/oy</span></div>
+                    <ul>
+                        <li>10 GB saqlash</li>
+                        <li>Asosiy xususiyatlar</li>
+                        <li>Email qo'llab-quvvatlash</li>
+                    </ul>
+                    <a href="login.html" class="btn-primary">Boshlash</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$9.99<span>/oy</span></div>
+                    <ul>
+                        <li>1 TB saqlash</li>
+                        <li>Barcha xususiyatlar</li>
+                        <li>24/7 qo'llab-quvvatlash</li>
+                        <li>Prioritet yordam</li>
+                    </ul>
+                    <a href="login.html" class="btn-primary">Tanlash</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$29.99<span>/oy</span></div>
+                    <ul>
+                        <li>Cheksiz saqlash</li>
+                        <li>Premium xususiyatlar</li>
+                        <li>Maxsus menejer</li>
+                        <li>API kirish</li>
+                    </ul>
+                    <a href="login.html" class="btn-primary">Bog'lanish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ai.js"></script>
+</body>
+
+</html>

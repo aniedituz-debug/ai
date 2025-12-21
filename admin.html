@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Alya_Kujou.Uz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="alya_avatar.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Admin Panel Specific Styles --- */
+        :root {
+            --panel-bg: #0a0a1a;
+            --sidebar-bg: #050510;
+            --card-bg: #121225;
+            --primary: #00d4ff;
+            --secondary: #ff00c8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--panel-bg);
+            color: white;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 250px;
+            background: var(--sidebar-bg);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+            border-right: 1px solid rgba(0, 212, 255, 0.2);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .brand {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .brand h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .brand i {
+            color: var(--primary);
+        }
+
+        .nav-links-admin {
+            list-style: none;
+            padding: 0 10px;
+        }
+
+        .nav-links-admin li {
+            margin-bottom: 5px;
+        }
+
+        .nav-links-admin a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #aaa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links-admin a:hover,
+        .nav-links-admin a.active {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-links-admin a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .user-profile {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            padding: 0 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-title h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .header-title p {
+            color: #aaa;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--sidebar-bg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* --- Stats Grid --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .stat-card p {
+            color: #aaa;
+        }
+
+        /* --- Recent Section --- */
+        .recent-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .section-header a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* --- Table Styles --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            color: #aaa;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.online {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .status.offline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        /* --- Page Sections --- */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* --- Switch --- */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* --- SQL Results Table --- */
+        #sqlResultsContainer table {
+            border-collapse: collapse;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #sqlResultsContainer th {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            padding: 12px 15px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        #sqlResultsContainer td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        #sqlResultsContainer tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #sqlResultsContainer tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+
+            .brand h2 span,
+            .nav-links-admin a span,
+            .user-info div {
+                display: none;
+            }
+
+            .brand {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .brand h2 {
+                justify-content: center;
+            }
+
+            .user-profile {
+                text-align: center;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .main-content {
+                margin-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            }
+
+            .nav-links-admin {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .nav-links-admin li {
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+
+            .nav-links-admin a {
+                white-space: nowrap;
+            }
+
+            .user-profile {
+                position: relative;
+                bottom: auto;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="brand">
+            <h2><i class="fa-solid fa-robot"></i> <span>Alya Admin</span></h2>
+        </div>
+
+        <ul class="nav-links-admin">
+            <li><a href="#" class="active" data-section="dashboard"><i class="fa-solid fa-gauge"></i>
+                    <span data-key="section_dashboard">Boshqaruv paneli</span></a></li>
+            <li><a href="#" data-section="users"><i class="fa-solid fa-users"></i> <span
+                        data-key="section_users">Foydalanuvchilar</span></a></li>
+            <li><a href="#" data-section="posts"><i class="fa-solid fa-newspaper"></i> <span
+                        data-key="section_posts">Postlar</span></a></li>
+            <li><a href="#" data-section="database"><i class="fa-solid fa-database"></i> <span
+                        data-key="section_database">Ma'lumotlar bazasi</span></a></li>
+            <li><a href="#" data-section="settings"><i class="fa-solid fa-gear"></i> <span
+                        data-key="section_settings">Sozlamalar</span></a></li>
+            <li><a href="#" data-section="analytics"><i class="fa-solid fa-chart-line"></i> <span
+                        data-key="section_analytics">Analitika</span></a></li>
+            <li><a href="#" data-section="transactions"><i class="fa-solid fa-money-bill-transfer"></i> <span
+                        data-key="section_transactions">Tranzaksiyalar</span></a></li>
+            <li><a href="#" data-section="security"><i class="fa-solid fa-shield-halved"></i> <span
+                        data-key="section_security">Xavfsizlik</span></a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user-gear"></i> <span>Mening profilim</span></a></li>
+            <li><a href="#" id="logoutBtnAdmin" style="color: #ff3333;"><i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Chiqish</span></a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div>
+                    <h4>User</h4>
+                    <p>Admin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <div class="header-title">
+                <h1 data-key="admin_welcome">Xush kelibsiz, Administrator</h1>
+                <p data-key="admin_subtitle">Platforma statistikasi va sozlamalari</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline"><i class="fa-solid fa-bell"></i></button>
+                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Yangi</button>
+            </div>
+        </div>
+
+        <!-- 1. DASHBOARD SECTION -->
+        <div id="section-dashboard" class="page-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>15,240</h3>
+                    <p data-key="stat_users">Foydalanuvchilar</p>
+                </div>
+                <div class="stat-card">
+                    <h3>8,750</h3>
+                    <p data-key="stat_active">Faol Foydalanuvchilar</p>
+                </div>
+                <div class="stat-card">
+                    <h3>1,240</h3>
+                    <p data-key="stat_posts">Postlar</p>
+                </div>
+                <div class="stat-card">
+                    <h3>99.9%</h3>
+                    <p data-key="stat_uptime">Faoliyat</p>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2 data-key="recent_activity">Oxirgi Faoliyatlar</h2>
+                    <a href="#">Barchasini ko'rish</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foydalanuvchi</th>
+                            <th>Vazifa</th>
+                            <th>Vaqti</th>
+                            <th>Holati</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar" style="background:#00d4ff;">A</div>
+                                    <span>Aniedituz</span>
+                                </div>
+                            </td>
+                            <td>Yangi post yaratdi</td>
+                            <td>10:30 AM</td>
+                            <td><span class="status online">Muvaffaqiyatli</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar">S</div>
+                                    <span>StormDev</span>
+                                </div>
+                            </td>
+                            <td>Sozlamalarni yangiladi</td>
+                            <td>09:15 AM</td>
+                            <td><span class="status online">Muvaffaqiyatli</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar" style="background:#ff3333;">O</div>
+                                    <span>OpenAI</span>
+                                </div>
+                            </td>
+                            <td>Xavfsizlik tekshiruvi</td>
+                            <td>Yesterday</td>
+                            <td><span class="status offline">Kutilmoqda</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. USERS SECTION -->
+        <div id="section-users" class="page-section">
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2 data-key="user_management">Foydalanuvchi Menejmenti</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foydalanuvchi</th>
+                            <th>Email</th>
+                            <th>Ro'l</th>
+                            <th>Holati</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userListTableBody">
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar" style="background:#ffd700; color:#000;">♛</div>
+                                    <span>System Owner</span>
+                                </div>
+                            </td>
+                            <td style="color: #00d4ff; font-family: monospace;">aniedituz@gmail.com</td>
+                            <td><span style="color: #ffd700">OWNER</span></td>
+                            <td><span class="status online">Online</span></td>
+                            <td><i class="fa-solid fa-ellipsis-vertical" style="color:#666; cursor:pointer;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar">A</div>
+                                    <span>Alex</span>
+                                </div>
+                            </td>
+                            <td style="color: #00d4ff; font-family: monospace;">alex@example.com</td>
+                            <td><span style="color: #ccc">ADMIN</span></td>
+                            <td><span class="status online">Online</span></td>
+                            <td><i class="fa-solid fa-ellipsis-vertical" style="color:#666; cursor:pointer;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar" style="background:#888;">M</div>
+                                    <span>Maria</span>
+                                </div>
+                            </td>
+                            <td style="color: #00d4ff; font-family: monospace;">maria@example.com</td>
+                            <td><span style="color: #ccc">USER</span></td>
+                            <td><span class="status offline">Offline</span></td>
+                            <td><i class="fa-solid fa-ellipsis-vertical" style="color:#666; cursor:pointer;"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. POSTS SECTION -->
+        <div id="section-posts" class="page-section">
+            <div class="stat-card"
+                style="margin-bottom: 30px; background: linear-gradient(135deg, var(--panel-bg), #1a1a35); border-left: 4px solid var(--primary);">
+                <div class="section-header">
+                    <h3><i class="fa-solid fa-pen-to-square"></i> Yangi Post Yaratish</h3>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <label
+                            style="display: block; font-size: 11px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase;">Sarlavha</label>
+                        <input type="text" id="postTitle" placeholder="Post sarlavhasini kiriting..."
+                            style="width: 100%; background: #0e0e1a; border: 1px solid #333; padding: 12px; border-radius: 8px; color: #fff;">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; font-size: 11px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase;">Kontent</label>
+                        <textarea id="postContent" placeholder="Post matnini yozing..."
+                            style="width: 100%; background: #0e0e1a; border: 1px solid #333; padding: 12px; border-radius: 8px; color: #fff; min-height: 150px; resize: vertical;"></textarea>
+                    </div>
+                    <button id="addPostBtn"
+                        style="background: var(--primary); color: #000; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; align-self: flex-start; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-paper-plane"></i> Chop Etish
+                    </button>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2>Mavjud Postlar</h2>
+                </div>
+                <div id="postsList" style="display: grid; gap: 20px;">
+                    <!-- Posts will be rendered here -->
+                    <div style="text-align: center; color: #666; padding: 40px;">Postlar yuklanmoqda...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-database" class="page-section">
+            <div class="stat-card"
+                style="margin-bottom: 30px; background: linear-gradient(135deg, var(--panel-bg), #1a1a35); border-left: 4px solid #ffd700;">
+                <div class="section-header">
+                    <h2 style="color: #ffd700;"><i class="fa-solid fa-database"></i> Database Explorer</h2>
+                    <p>SQL so'rovlarni to'g'ridan-to'g'ri bajarish (Faqat Owner uchun)</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <label
+                            style="display: block; font-size: 11px; color: #ffd700; margin-bottom: 5px; text-transform: uppercase;">SQL
+                            Query</label>
+                        <textarea id="sqlQueryInput" placeholder="Masalan: SELECT * FROM users;"
+                            style="width: 100%; height: 120px; background: #050510; color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 8px; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 14px; resize: vertical;"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="executeBtn"
+                            style="background: #ffd700; color: #000; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-bolt"></i> Execute Query
+                        </button>
+                        <button id="clearSqlBtn"
+                            style="background: transparent; color: #fff; border: 1px solid #444; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Natija</h3>
+                    <span id="queryStatus" style="font-size: 12px; color: #888;"></span>
+                </div>
+                <div id="sqlResultsContainer"
+                    style="overflow-x: auto; margin-top: 20px; background: rgba(0,0,0,0.2); border-radius: 8px; min-height: 100px;">
+                    <div style="text-align: center; color: #555; padding: 40px;">Hali hech qanday so'rov bajarilmadi.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-analytics" class="page-section">
+            <div class="stat-card">
+                <h2>Analytics</h2>
+                <p style="color: #666; margin-top: 10px;">Chart.js integration coming soon...</p>
+            </div>
+        </div>
+
+        <div id="section-transactions" class="page-section">
+            <div class="stat-card">
+                <h2>Transactions</h2>
+                <p style="color: #666; margin-top: 10px;">Payment logs coming soon...</p>
+            </div>
+        </div>
+
+        <!-- 6. SECURITY SECTION -->
+        <div id="section-security" class="page-section">
+            <div class="stats-grid" style="grid-template-columns: 1fr;">
+                <div class="stat-card">
+                    <h3>Security Settings</h3>
+                    <div style="margin-top: 20px; display: grid; gap: 15px;">
+                        <div>
+                            <label style="display: block; color: #888; margin-bottom: 5px;">Current Password</label>
+                            <input type="password" placeholder="********"
+                                style="width: 100%; padding: 10px; background: #0e0e1a; border: 1px solid #333; color: white; border-radius: 5px;">
+                        </div>
+                        <div>
+                            <label style="display: block; color: #888; margin-bottom: 5px;">New Password</label>
+                            <input type="password" placeholder="********"
+                                style="width: 100%; padding: 10px; background: #0e0e1a; border: 1px solid #333; color: white; border-radius: 5px;">
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px;">
+                            <span>Two-Factor Authentication (2FA)</span>
+                            <label class="switch"><input type="checkbox" checked><span
+                                    class="slider round"></span></label>
+                        </div>
+                        <button
+                            style="width: 150px; padding: 10px; background: #ff3333; border: none; border-radius: 5px; cursor: pointer; color: white; font-weight: bold; margin-top: 10px;">Update
+                            Security</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+        // Check User Role on Load (Inline to prevent flash of unauthorized content)
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = localStorage.getItem('alya_user_role');
+            const email = localStorage.getItem('alya_user_email');
+            const OWNER_EMAIL = 'aniedituz@gmail.com';
+
+            if (role !== 'owner' || (email && email.toLowerCase() !== OWNER_EMAIL)) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const avatar = document.querySelector('.user-avatar');
+            avatar.textContent = '♛';
+            avatar.style.background = '#ffd700';
+            avatar.style.color = '#000';
+
+            document.querySelector('.brand span').textContent = 'Alya Owner Panel';
+            document.querySelector('.brand i').style.color = '#ffd700';
+            document.querySelector('.header-title p').textContent = `Welcome back, Master Aniedituz`;
+        });
+    </script>
+</body>
+
+</html>
